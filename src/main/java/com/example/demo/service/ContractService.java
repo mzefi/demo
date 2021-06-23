@@ -6,7 +6,9 @@ import com.example.demo.entities.Contract;
 import com.example.demo.repositories.ContractRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ContractService {
 
     private final ContractRepository contractRepository;
