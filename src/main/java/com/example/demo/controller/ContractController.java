@@ -51,7 +51,7 @@ public class ContractController {
     @PostMapping(value = "/webhookhandler")
     public GoogleActionsResponse handleContractRequest(@RequestBody GoogleActionsRequest body) throws InterruptedException, ExecutionException {
         // Handler ermitteln
-        String handlerName = body.getHandler().getName();
+        String handlerName = body.getRequestJson().getHandler().getName();
 
         GoogleActionsResponse response = null;
 
@@ -68,8 +68,8 @@ public class ContractController {
                                 .speech("Es gibt keinen Handler für '" + handlerName + "'")
                                 .build())
                         .build())
-                .session(body.getSession())
-                .scene(body.getScene())
+                .session(body.getRequestJson().getSession())
+                .scene(body.getRequestJson().getScene())
                 .build();
         }
 

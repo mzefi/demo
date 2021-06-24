@@ -10,10 +10,18 @@ import lombok.ToString;
 @Setter
 @ToString
 public class GoogleActionsRequest {
+    private RequestJson requestJson;
+    
+    @Getter
+    @Setter
+    @ToString
+    public class RequestJson{
     private Handler handler;
     private Intent intent;
     private GoogleActionsSession session;
     private GoogleActionsScene scene;
+
+    
 
     @Getter
     @Setter
@@ -30,4 +38,7 @@ public class GoogleActionsRequest {
         private Map<String, GoogleActionsIntentParameterValue> params;
         private String query;
     }
+
+
+}
 }

@@ -30,8 +30,8 @@ public class WebhookHandler {
                             .build())
                         .build())
                     .build())
-                .session(request.getSession())
-            .scene(request.getScene())
+                .session(request.getRequestJson().getSession())
+            .scene(request.getRequestJson().getScene())
         .build();
 
         return response;
@@ -39,13 +39,13 @@ public class WebhookHandler {
 
     private String getContractData(GoogleActionsRequest request) {
         String contractData = "";
-        String contractNr = request.getSession().getParams().get("contract_num").toString();
+        Long contractNr = Long.valueOf(request.getRequestJson().getSession().getParams().get("contract_num").toString());
         
-        if(contractNr.isEmpty()){
+        if(contractNr != null ){
             contractData = "Bitte Antragsnummer angeben";
         }
 
-        Contract contract = contractController.findContractById(Long.valueOf(contractNr));
+        Contract contract = contractController.findContractById(contractNr);
         contractData = "Name: "+contract.getCustomer().getSurname()+" "+contract.getCustomer().getName()+"\nGeburtsdatum: "+contract.getCustomer().getBirthDate().toString()+"\nNationalität: "+contract.getCustomer().getNationality()+"\n";
         return contractData;
     }
