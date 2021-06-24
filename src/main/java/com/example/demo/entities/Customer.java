@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.GeneratedValue;
@@ -23,23 +22,15 @@ public class Customer {
     private String address;
     private String postcode;
     private String town;
-    @OneToOne(mappedBy = "customer")
-    private WorldCheck worldCheck;
+    private boolean worldCheck;
 
-    public WorldCheck getWorldCheck() {
+
+    public boolean isWorldCheck() {
         return worldCheck;
     }
 
-    public void setWorldCheck(WorldCheck worldCheck) {
+    public void setWorldCheck(boolean worldCheck) {
         this.worldCheck = worldCheck;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAddress() {

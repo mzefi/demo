@@ -32,6 +32,11 @@ public class CustomerController {
         return customerService.getCustomers();
     }
 
+    @GetMapping("{id}")
+    public boolean getWorldCheck(@PathVariable Long id){
+        return customerService.getWorldCheck(id);
+    }
+
     @PostMapping
     public void newCustomer(@RequestBody Customer customer){
         customerService.addNewCustomer(customer);

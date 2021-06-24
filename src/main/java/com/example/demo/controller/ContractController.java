@@ -1,15 +1,20 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
+import com.example.demo.ContractModel;
 import com.example.demo.entities.Contract;
 import com.example.demo.service.ContractService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -31,8 +36,17 @@ public class ContractController {
     }
 
     @PostMapping
-    public void addNewContract(@RequestBody Contract contract){
-        contractService.addNewContract(contract);
+    public void addNewContract(@RequestBody ContractModel contractModel) throws ParseException{
+        contractService.addNewContract(contractModel);
+    }
+
+    @PutMapping(path = "{id}")
+    public void setVisited(
+        @PathVariable("id") Long id, 
+        @RequestParam(required = false) boolean visited) throws ParseException{
+
+            contractService.setVisited(id, visited);
+
     }
 
 

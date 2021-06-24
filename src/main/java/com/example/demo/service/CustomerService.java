@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import com.example.demo.entities.Customer;
 import com.example.demo.repositories.CustomerRepository;
@@ -67,5 +68,14 @@ public class CustomerService {
             Date date = formatter.parse(birthDate);
             customer.setBirthDate(date);
         }
+    }
+
+    public boolean getWorldCheck(Long id) {
+
+        Optional<Customer> world = customerRepository.findById(id);
+        if(!world.isPresent()){
+            throw new IllegalStateException("No Worldcheck available");
+        }
+        return world.get().isWorldCheck();
     }
 }

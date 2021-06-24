@@ -11,23 +11,24 @@ public class Contract {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Long contractId;
+    private Long contractNr;
+    private boolean visited;
     @ManyToOne
     private Customer customer;
     @ManyToOne
     private Account account;
     
-    public Long getId() {
-        return id;
+    public Long getContractNr() {
+        return contractNr;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setContractNr(Long contractNr) {
+        this.contractNr = contractNr;
     }
-    public Long getContractId() {
-        return contractId;
+    public boolean isVisited() {
+        return visited;
     }
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
     public Customer getCustomer() {
         return customer;
@@ -41,6 +42,4 @@ public class Contract {
     public void setAccount(Account account) {
         this.account = account;
     }
-
-    
 }

@@ -10,14 +10,6 @@ public class Account {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String iban;
-
-    public String getIban() {
-        return iban;
-    }
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
     private Boolean blocked;
     
     public Long getId() {
