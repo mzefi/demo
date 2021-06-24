@@ -55,7 +55,7 @@ public class ContractService {
 
         Contract contract = new Contract();
         contract.setContractNr(model.getContractNr());
-        contract.setVisited(false);
+        contract.setVerified(false);
         contract.setCustomer(customer);
         contract.setAccount(account);
         contractRepository.save(contract);
@@ -66,11 +66,15 @@ public class ContractService {
     }
 
     @Transactional
-    public void setVisited(Long id, boolean visited) {
-        Contract contract = contractRepository.findById(id).orElseThrow(() -> new IllegalStateException("Customer not found"));
+    public void setVerified(Long contractNr, boolean verified) {
+        List<Contract> contracts = contractRepository.findByContractNr(contractNr);
+        if(contracts.isEmpty()){
+            throw new IllegalStateException("Customer not found");
+        }
+        Contract contract = contracts.get(0);
 
-        if(!Objects.equals(contract.isVisited(), visited)){
-            contract.setVisited(visited);
+        if(!Objects.equals(contract.isVerified(), verified)){
+            contract.setVerified(verified);
         }
     }
 

@@ -50,7 +50,7 @@ public class CustomerController {
         @RequestParam(required = false) String nationality, 
         @RequestParam(required = false) String birthDate) throws ParseException{
 
-            customerService.updateCustomer(id, name, surname, nationality, birthDate);
+        customerService.updateCustomer(id, name, surname, nationality, birthDate);
 
     }
 

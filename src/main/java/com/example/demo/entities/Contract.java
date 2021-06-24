@@ -12,7 +12,7 @@ public class Contract {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Long contractNr;
-    private boolean visited;
+    private boolean verified;
     @ManyToOne
     private Customer customer;
     @ManyToOne
@@ -24,11 +24,11 @@ public class Contract {
     public void setContractNr(Long contractNr) {
         this.contractNr = contractNr;
     }
-    public boolean isVisited() {
-        return visited;
+    public boolean isVerified() {
+        return verified;
     }
-    public void setVisited(boolean visited) {
-        this.visited = visited;
+    public void setVerified(boolean visited) {
+        this.verified = visited;
     }
     public Customer getCustomer() {
         return customer;

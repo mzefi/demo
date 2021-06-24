@@ -41,11 +41,11 @@ public class ContractController {
     }
 
     @PutMapping(path = "{id}")
-    public void setVisited(
-        @PathVariable("id") Long id, 
-        @RequestParam(required = false) boolean visited) throws ParseException{
+    public void setVerified(
+        @PathVariable("id") Long contractNr, 
+        @RequestParam(required = false) boolean verified) throws ParseException{
 
-            contractService.setVisited(id, visited);
+        contractService.setVerified(contractNr, verified);
 
     }
 

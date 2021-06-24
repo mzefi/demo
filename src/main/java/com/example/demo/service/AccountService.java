@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.transaction.Transactional;
@@ -36,6 +37,10 @@ public class AccountService {
 
     public void deleteAccount(Long id) {
         accountRepository.deleteById(id);
+    }
+
+    public List<Account> getAccount() {
+        return accountRepository.findAll();
     }
     
 }
