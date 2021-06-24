@@ -35,7 +35,7 @@ public class ContractService {
     }
 
     public void addNewContract(ContractModel model) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");  
         Date birthDate = formatter.parse(model.getBirthDate());
 
         Customer customer = new Customer();
@@ -63,6 +63,18 @@ public class ContractService {
 
     public List<Contract> getContract() {
         return contractRepository.findAll();
+    }
+
+    public Contract findContractById(Long contractId){
+
+        List<Contract> contracts = contractRepository.findByContractNr(contractId);
+        if(contracts.isEmpty()){
+            throw new IllegalStateException("Antrag mit der ID: "+contractId+" nicht vorhanden");
+        }
+        
+        Contract contract = contracts.get(0);
+
+        return contract; 
     }
 
     @Transactional
