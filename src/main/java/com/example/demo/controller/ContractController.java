@@ -51,6 +51,7 @@ public class ContractController {
     @PostMapping(value = "/webhookhandler")
     public GoogleActionsResponse handleContractRequest(@RequestBody GoogleActionsRequest body) throws InterruptedException, ExecutionException {
         // Handler ermitteln
+        System.out.println(body.toString());
         String handlerName = body.getRequestJson().getHandler().getName();
 
         GoogleActionsResponse response = null;
