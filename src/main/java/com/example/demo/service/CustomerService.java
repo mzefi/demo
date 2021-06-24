@@ -64,7 +64,7 @@ public class CustomerService {
         }
 
         if(birthDate != null && !Objects.equals(customer.getBirthDate().toString(), birthDate)){
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date date = formatter.parse(birthDate);
             customer.setBirthDate(date);
         }
